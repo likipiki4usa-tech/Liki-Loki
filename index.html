@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loki ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+html, body{
+margin:0;
+padding:0;
+height:100%;
+overflow:hidden; /* THIS STOPS SCROLL */
+font-family:'Quicksand', sans-serif;
+background:#ffe6f0;
+}
+
+/* Page container */
+.page{
+display:none;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.active{
+display:flex;
+}
+
+/* Card */
+.container{
+background:#fff0f5;
+border:3px solid #ff69b4;
+width:90%;
+max-width:350px;
+padding:20px;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,105,180,0.5);
+text-align:center;
+}
+
+/* Text */
+h1{
+font-family:'Pacifico', cursive;
+color:#ff4d88;
+font-size:20px;
+}
+
+h2{
+color:#ff6699;
+font-size:15px;
+}
+
+p{
+font-size:13px;
+line-height:1.4;
+}
+
+/* Images */
+img{
+width:80%;
+max-width:220px;
+margin:12px 0;
+border-radius:15px;
+}
+
+/* Buttons */
+button{
+width:85%;
+padding:12px;
+margin:10px auto;
+display:block;
+font-size:14px;
+border:none;
+border-radius:40px;
+background:linear-gradient(135deg,#ff69b4,#ff1493);
+color:white;
+}
+
+button:active{
+transform:scale(0.95);
+}
+
+#noBtn{
+position:relative;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page active" id="loading">
+<div class="container">
+<h1>Loading love.exe 💕</h1>
+<p id="countdown">Starting in 5...</p>
+</div>
+</div>
+
+<div class="page" id="page1">
+<div class="container">
+<h1>Loki 💖</h1>
+<img src="first.png">
+<h2>Will you be my Valentine? 🥺</h2>
+<button id="yesBtn">Yes 😍</button>
+<button id="noBtn">No 😢</button>
+</div>
+</div>
+
+<div class="page" id="story">
+<div class="container">
+<h1>Our Story 💕</h1>
+<img src="second.png">
+<p>
+2017… I saw you and instantly had a crush. 💖<br>
+2018… we started talking.<br>
+March 15, 2019… forever memory.<br>
+2021… shop opening. We talked. We fell in love.<br>
+From 2023 till now, we choose each other.
+</p>
+<button onclick="showPage('proposal')">Continue 💘</button>
+</div>
+</div>
+
+<div class="page" id="proposal">
+<div class="container">
+<h1>I love you 💍</h1>
+<img src="proposal.png">
+<p>I still choose you. Always. 💖</p>
+<button onclick="showPage('final')">Next 💕</button>
+</div>
+</div>
+
+<div class="page" id="final">
+<div class="container">
+<h1>Happy Valentine’s Day ❤️</h1>
+<img src="fourth.png">
+<button onclick="showPage('last')">One last thing 💕</button>
+</div>
+</div>
+
+<div class="page" id="last">
+<div class="container">
+<img src="fifth.png">
+<h1>I love you 💞</h1>
+</div>
+</div>
+
+<script>
+
+let timeLeft = 5;
+let countdown = document.getElementById("countdown");
+
+let timer = setInterval(function(){
+timeLeft--;
+countdown.innerHTML = "Starting in " + timeLeft + "...";
+if(timeLeft <= 0){
+clearInterval(timer);
+showPage("page1");
+}
+},1000);
+
+function showPage(id){
+document.querySelectorAll(".page").forEach(p => p.style.display="none");
+document.getElementById(id).style.display="flex";
+}
+
+document.getElementById("yesBtn").onclick=function(){
+showPage("story");
+};
+
+document.getElementById("noBtn").addEventListener("click",function(){
+this.style.transform="translate("+(Math.random()*50-25)+"px,"+(Math.random()*30-15)+"px)";
+});
+
+</script>
+
+</body>
+</html>
